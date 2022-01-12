@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  ftShopCart
+  namespace: default
+  labels:
+    app:  ftShopCart
+spec:
+  selector:
+    matchLabels:
+      app: ftShopCart
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app:  ftShopCart
+    spec:
+      containers:
+      - name:  ftShopCart
+        image:  ${IMG_URL}
+        ports:
+        - containerPort:  80
+          name:  ftShopCart
+      restartPolicy: Always
+      
